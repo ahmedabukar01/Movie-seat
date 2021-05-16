@@ -4,7 +4,12 @@ const count = document.querySelector('#count');
 const total = document.querySelector('#total');
 const movieSelect = document.querySelector('#movie');
 
-const moviePrice = parseInt(movieSelect.value);
+let moviePrice = parseInt(movieSelect.value);
+
+movieSelect.addEventListener('change',e=>{
+     moviePrice = +e.target.value;
+     updateSelected();
+})
 
 // update selected fuction
 function updateSelected(){
