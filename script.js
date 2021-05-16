@@ -6,8 +6,14 @@ const movieSelect = document.querySelector('#movie');
 
 let moviePrice = parseInt(movieSelect.value);
 
+// saving movie index and move price
+function movieData(movieIndex,moviePrice){
+    localStorage.setItem('movieprice',moviePrice);
+    localStorage.setItem('movieIndex',movieIndex);
+}
 movieSelect.addEventListener('change',e=>{
      moviePrice = +e.target.value;
+     movieData(e.target.selectedIndex,moviePrice);
      updateSelected();
 })
 
@@ -17,6 +23,9 @@ function updateSelected(){
     const selectedCount = selectedSeats.length;
     count.innerText = selectedCount
     total.innerText = selectedCount*moviePrice;
+    
+    const seatIndex = [...selectedSeats].map(seat=> [...seats].indexOf(seat));
+    localStorage.setItem('selectedseats', JSON.stringify(seatIndex));
 }
 container.addEventListener('click',e=>{
     if(e.target.classList.contains('seat') && 
