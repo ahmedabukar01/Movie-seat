@@ -18,6 +18,7 @@ movieSelect.addEventListener('change',e=>{
      movieData(e.target.selectedIndex,moviePrice);
      updateSelected();
 })
+
 // get data from local storage
 function populateUi(){
     const selectedSeats = JSON.parse(localStorage.getItem('selectedseats'));
